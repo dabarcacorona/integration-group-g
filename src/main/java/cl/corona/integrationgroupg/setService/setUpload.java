@@ -101,17 +101,6 @@ public class setUpload {
                         }
                         break;
 
-                    //FLUJO OC COMEX
-                    case "SDIPMGHDI":
-                        if (file.isFile()) {
-                            String filename = file.getAbsolutePath();
-                            LOG.info("Uploading Files OC CMX " + filename + " ---> " + d_sftpdst);
-                            d_sftp.put(filename, d_sftpdst);
-                            file.delete();
-                            LOG.info("{} : Upload Ok", dateTimeFormatter.format(LocalDateTime.now()));
-                        }
-                        break;
-
                     //FLUJO CMX VPC COMEX
                     case "CMX":
                         if (file.isFile()) {

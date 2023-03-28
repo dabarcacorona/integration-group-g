@@ -37,6 +37,9 @@ public class SetUploadCOMEX {
     @Value("${sftpdcmx.dst_OC}")
     private String d_sftpdst_OC;
 
+    @Value("${sftpdcmx.dst_CMXVPC}")
+    private String d_sftpdst_CMXVPC;
+
     @Value("${name.file}")
     private String d_namefile;
 
@@ -100,6 +103,17 @@ public class SetUploadCOMEX {
                             String filename = file.getAbsolutePath();
                             LOG.info("Uploading Files OC " + filename + " ---> " + d_sftpdst_OC);
                             d_sftp.put(filename, d_sftpdst_OC);
+                            file.delete();
+                            LOG.info("{} : Upload Ok", dateTimeFormatter.format(LocalDateTime.now()));
+
+                        }
+                        break;
+
+                    case "CMX":
+                        if (file.isFile()) {
+                            String filename = file.getAbsolutePath();
+                            LOG.info("Uploading Files VPC CMX " + filename + " ---> " + d_sftpdst_CMXVPC);
+                            d_sftp.put(filename, d_sftpdst_CMXVPC);
                             file.delete();
                             LOG.info("{} : Upload Ok", dateTimeFormatter.format(LocalDateTime.now()));
 
